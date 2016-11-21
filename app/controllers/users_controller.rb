@@ -3,10 +3,6 @@ class UsersController < ApplicationController
 
   def add_books
     @current_user.books_read = params[:books_read]
-    @current_user.books_read.map! do |br|
-      br.to_unsafe_h
-    end
-    @current_user.books_read = @current_user.books_read.to_json
     if @current_user.save
       render json: {message: 'Books read successfully updated!'}
     else
@@ -15,7 +11,6 @@ class UsersController < ApplicationController
   end
 
   def get_books
-    books_read = @current_user.books_read.present? ? JSON.parse(@current_user.books_read) : []
-    render json: {books_read: books_read}
+    render json: {books_read: @current_user.books_read}
   end
 end
