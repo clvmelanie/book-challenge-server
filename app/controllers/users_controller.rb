@@ -11,6 +11,6 @@ class UsersController < ApplicationController
   end
 
   def get_books
-    render json: {books_read: @current_user.books_read ? @current_user.books_read.present? : []}
+    render json: {books_read: @current_user.books_read.present? ? @current_user.books_read : []}
   end
 end
