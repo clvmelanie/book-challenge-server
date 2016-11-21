@@ -22,4 +22,6 @@ test:
 
 production:
   <<: *default
-  database: book_challenge_db
+  database: da5g609cidfobi
+  username: <%= ENV['BOOK_CHALLENGE_DB_USERNAME'] %>
+  password: <%= ENV['BOOK_CHALLENGE_DB_PASSWORD'] %>
